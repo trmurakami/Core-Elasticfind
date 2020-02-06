@@ -36,7 +36,7 @@ class  Elasticsearch
      * @param string[] $fields           Fields to return, if null, return all.
      * @param string   $alternativeIndex Query alternative index, if filled.
      * 
-     * @return array    $response          Retorno 
+     * @return string[]        
      */
     public static function get($_id, $fields = null, $alternativeIndex = "")
     {
@@ -55,7 +55,7 @@ class  Elasticsearch
 
         $response = $client->get($params);
         return $response;
-    }    
+    }
 }
         
 
