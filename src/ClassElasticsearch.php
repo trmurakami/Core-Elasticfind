@@ -18,10 +18,10 @@
     namespace Elasticfind;
 
     /**
-     * Short description for class
+     * Class to interact with Elasticsearch
      *
-     * @category CategoryName
-     * @package  PackageName
+     * @category Elasticsearch
+     * @package  Elasticfind
      * @author   Tiago Rodrigo Marçal Murakami <trmurakami@gmail.com>
      * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
      * @link     https://github.com/trmurakami/Core-Elasticfind
