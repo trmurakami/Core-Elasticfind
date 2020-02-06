@@ -29,6 +29,16 @@
 
 class  Elasticsearch
 {
+    
+    /**
+     * Get $index and $client variables
+     */
+    public function __construct() 
+    {
+        global $index;
+        global $client;
+    }
+
     /**
      * Retrieve 1 record in Elasticsearch
      *
@@ -40,8 +50,6 @@ class  Elasticsearch
      */
     public static function get($_id, $fields = null, $alternativeIndex = "")
     {
-        global $index;
-        global $client;
         $params = [];
 
         if (strlen($alternativeIndex) > 0) {
@@ -56,6 +64,34 @@ class  Elasticsearch
         $response = $client->get($params);
         return $response;
     }
+
+    /**
+     * Search in Elasticsearch
+     *
+     * @param string[] $fields           Fields to return, if null, return all.
+     * @param int      $size             Amount of responses needed.
+     * @param string[] $body             Arquivo JSON com os parâmetros das consultas no Elasticsearch
+     * @param string   $alternativeIndex Query alternative index, if filled.
+     * 
+     * @return string[]
+     */
+    public static function search($fields, $size, $body, $alternativeIndex = "")
+    {
+        $params = [];
+
+        if (strlen($alternativeIndex) > 0 ) {
+            $params["index"] = $alternativeIndex;
+        } else {
+            $params["index"] = $index;
+        }
+
+        $params["_source"] = $fields;
+        $params["size"] = $size;
+        $params["body"] = $body;
+
+        $response = $client->search($params);
+        return $response;
+    }    
 }
         
 
