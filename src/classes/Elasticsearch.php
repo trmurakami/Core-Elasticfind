@@ -17,6 +17,9 @@
 
     namespace Elasticfind;
 
+    /* Load libraries for PHP composer */
+    require __DIR__.'/../vendor/autoload.php';
+
     /**
      * Class to interact with Elasticsearch
      *
